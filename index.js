@@ -26,8 +26,10 @@ app.set("view engine", "ejs");
 // GET method
 app.get('/',(req, res) => {
 	TodoTask.find({}, (err, tasks) => {
+		console.log("rendering");
 		res.render("todo.ejs", { todoTasks: tasks });
 	});
+	// res.render('todo.ejs')
 });
 
 // POST method
@@ -41,4 +43,5 @@ app.post('/',async (req, res) => {
 	} catch (err) {
 		res.redirect("/");
 	}
+	console.log(req.body.content);
 });
